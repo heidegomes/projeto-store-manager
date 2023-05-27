@@ -10,4 +10,10 @@ const getById = async (id) => {
   return result;
 };
 
-module.exports = { getAll, getById };
+const registerProduct = async (data) => {
+  const productsPromisse = data.map((product) => productsModel.registerProduct(product));
+  const result = await Promise.all(productsPromisse);
+  return result;
+};
+
+module.exports = { getAll, getById, registerProduct };
