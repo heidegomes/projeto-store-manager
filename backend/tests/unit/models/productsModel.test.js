@@ -1,7 +1,7 @@
 const chai = require('chai');
 const sinon = require('sinon');
 const connection = require('../../../src/models/connection');
-const listProducts = require('../../../src/mocks/player.mock');
+const listProducts = require('../../../src/mocks/products.mock');
 const productsModel = require('../../../src/models/productsModel');
 
 const { expect } = chai;

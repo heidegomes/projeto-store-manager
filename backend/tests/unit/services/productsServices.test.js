@@ -1,6 +1,6 @@
 const chai = require('chai');
 const sinon = require('sinon');
-const listProducts = require('../../../src/mocks/player.mock');
+const listProducts = require('../../../src/mocks/products.mock');
 const productsModel = require('../../../src/models/productsModel');
 const productsService = require('../../../src/services/productsService');
 
