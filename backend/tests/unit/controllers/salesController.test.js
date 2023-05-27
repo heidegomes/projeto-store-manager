@@ -9,7 +9,7 @@ chai.use(sinonChai);
 const { expect } = chai;
 
 describe('testes da camada controller de sales', function () {
-  const req = {};
+  const req = { params: { id: 1 } };
   const res = {};
 
   beforeEach(function () {
