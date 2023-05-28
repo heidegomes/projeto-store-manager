@@ -11,19 +11,23 @@ describe('testes da camada model de products', function () {
     sinon.restore();
   });
   it('Testa se a função getAll retorna todos os produtos do banco', async function () {
-    // Arrange
     sinon.stub(connection, 'execute').resolves([listProducts]);
-    // Act
     const result = await productsModel.getAll();
-    // Assert
     expect(result).to.be.deep.equal(listProducts);
   });
   it('Testa se a função getById retorna o produto referente ao id passado', async function () {
-    // Arrange
     sinon.stub(connection, 'execute').resolves([listProducts[0]]);
-    // Act
     const result = await productsModel.getById(1);
-    // Assert
     expect(result).to.be.deep.equal(listProducts[0]);
+  });
+    it('Testa se a função registerProduct cadastra um produto', async function () {
+      sinon.stub(connection, 'execute').resolves([{ insertId: 10 }]);
+      const result = await productsModel.registerProduct({ name: 'anel do lanterna verde' });
+      expect(result).to.deep.equal(
+        {
+          id: 10,
+          name: 'anel do lanterna verde',
+        },
+      );
   });
 });

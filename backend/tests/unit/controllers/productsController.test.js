@@ -16,20 +16,14 @@ describe('testes da camada controller de products', function () {
     res.json = sinon.stub().returns();
   });
   it('Testa se a função getAll retorna todos os produtos do banco', async function () {
-    // Arrange
     sinon.stub(productsService, 'getAll').resolves(listProducts);
-    // Act
     await productsController.getAll(req, res);
-    // Assert
     expect(res.status).to.be.calledWith(200);
     expect(res.json).to.be.calledWith(listProducts);
   });
   it('Testa se a função getById retorna o produto referente ao id passado', async function () {
-    // Arrange
     sinon.stub(productsService, 'getById').resolves(listProducts);
-    // Act
     await productsController.getById(req, res);
-    // Assert
     expect(res.status).to.be.calledWith(200);
     expect(res.json).to.be.calledWith(listProducts);
   });

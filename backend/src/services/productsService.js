@@ -10,9 +10,12 @@ const getById = async (id) => {
   return result;
 };
 
-const registerProduct = async (data) => {
-  const productsPromisse = data.map((product) => productsModel.registerProduct(product));
-  const result = await Promise.all(productsPromisse);
+const registerProduct = async ({ name }) => {
+  // const productsPromisse = data.map((product) => productsModel.registerProduct(product));
+  // console.log(productsPromisse);
+  // const result = await Promise.all(productsPromisse);
+  // console.log('service', result);
+  const result = await productsModel.registerProduct({ name });
   return result;
 };
 
