@@ -7,7 +7,11 @@ const getAll = async () => {
 
 const getById = async (id) => {
   const result = await salesModel.getById(id);
-  // const resultTemp = await salesModel.getById(id);
+  if (!result) {
+    return false;
+  }
+  return result;
+  
   // const result = [];
   // for (let index = 0; index < resultTemp.length; index += 1) {
   //   const element = resultTemp[index];
@@ -17,8 +21,9 @@ const getById = async (id) => {
   //     quantity: element.quantity,
   //   });
   // }
-  console.log('service', result);
-  return result;
+  // if (!result) {
+  //   return false;
+  // }
 };
 
 module.exports = { getAll, getById };
