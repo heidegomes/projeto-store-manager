@@ -12,7 +12,6 @@ const getById = async (id) => {
     .execute(`SELECT s.date, sp.product_id AS productId, sp.quantity 
     FROM StoreManager.sales s join StoreManager.sales_products sp 
     on s.id = sp.sale_id WHERE s.id = ?`, [id]);
-  console.log(result);
   return result;
 };
 
