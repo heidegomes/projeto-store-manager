@@ -11,19 +11,14 @@ const getById = async (id) => {
     return false;
   }
   return result;
-  
-  // const result = [];
-  // for (let index = 0; index < resultTemp.length; index += 1) {
-  //   const element = resultTemp[index];
-  //   result.push({
-  //     date: element.date,
-  //     productId: element.productId,
-  //     quantity: element.quantity,
-  //   });
-  // }
-  // if (!result) {
-  //   return false;
-  // }
 };
 
-module.exports = { getAll, getById };
+const registerSale = async (data) => {
+  const salesPromisse = data.map((sale) => salesModel.registerInSaleProducts(sale));
+  console.log(salesPromisse);
+  const result = await Promise.all(salesPromisse);
+  console.log('service', result);
+  return result;
+};
+
+module.exports = { getAll, getById, registerSale };

@@ -17,11 +17,7 @@ const getById = async (req, res) => {
 const registerProduct = async (req, res) => {
   const data = req.body;
   const result = await productsService.registerProduct(data);
-  // console.log('controller', result);
-  if (result) {
-    return res.status(201).json(result);
-  }
-  res.status(404).json({ message: 'Product not found' });
+  return res.status(201).json(result);
 };
 
 module.exports = { getAll, getById, registerProduct };

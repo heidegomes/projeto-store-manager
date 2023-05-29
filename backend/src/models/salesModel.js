@@ -15,4 +15,18 @@ const getById = async (id) => {
   return result;
 };
 
+// const registerInSales = async ({ quantity }) => {
+//   const query = 'INSERT INTO StoreManager.sales (quantity) VALUE (?) ';
+//   console.log(query);
+//   const [{ productId }] = await connection.execute(query, [quantity]);
+//   return { id: productId, quantity };
+// };
+
+// const registerInSaleProducts = async ({ quantity }) => {
+//   const query = 'INSERT INTO StoreManager.sales_products (quantity) VALUE(?)';
+//   console.log(query);
+//   const [{ productId }] = await connection.execute(query, [quantity]);
+//   return { id: productId, quantity };
+// };
+
 module.exports = { getAll, getById };

@@ -9,22 +9,40 @@ chai.use(sinonChai);
 const { expect } = chai;
 
 describe('testes da camada controller de products', function () {
-  const req = { params: { id: 1 } };
+  let req = {};
   const res = {};
   beforeEach(function () {
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns();
   });
+
   it('Testa se a função getAll retorna todos os produtos do banco', async function () {
     sinon.stub(productsService, 'getAll').resolves(listProducts);
     await productsController.getAll(req, res);
     expect(res.status).to.be.calledWith(200);
     expect(res.json).to.be.calledWith(listProducts);
   });
+
   it('Testa se a função getById retorna o produto referente ao id passado', async function () {
+    req = { params: { id: 1 } };
+    
     sinon.stub(productsService, 'getById').resolves(listProducts);
     await productsController.getById(req, res);
     expect(res.status).to.be.calledWith(200);
     expect(res.json).to.be.calledWith(listProducts);
+  });
+
+  it('Testa se a função registerProduct cadastra o produto', async function () {
+    req = { body: { name: 'anel do lanterna verde' } };
+
+    const mockProduct = {
+    id: 7,
+    name: 'anel do laterna verde',
+    };
+
+    sinon.stub(productsService, 'registerProduct').resolves(mockProduct);
+    await productsController.registerProduct(req, res);
+    expect(res.status).to.be.calledWith(201);
+    expect(res.json).to.be.calledWithExactly(mockProduct);
   });
 });
