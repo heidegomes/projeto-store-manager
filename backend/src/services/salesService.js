@@ -14,11 +14,17 @@ const getById = async (id) => {
 };
 
 const registerSale = async (data) => {
-  const salesPromisse = data.map((sale) => salesModel.registerInSaleProducts(sale));
-  console.log(salesPromisse);
-  const result = await Promise.all(salesPromisse);
-  console.log('service', result);
-  return result;
+  const salesId = await salesModel.registerInSales();
+  const arrProducts = data.map((product) => (
+    salesModel.registerInSaleProducts(salesId, product.productId, product.quantity)
+  ));
+  await Promise.all(arrProducts);
+  console.log('array', arrProducts);
+  const objProduct = {
+    id: salesId,
+    itemsSold: data,
+  };
+  return objProduct;
 };
 
 module.exports = { getAll, getById, registerSale };

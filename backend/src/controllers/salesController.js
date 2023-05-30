@@ -17,7 +17,6 @@ const getById = async (req, res) => {
 const registerSale = async (req, res) => {
   const data = req.body;
   const result = await salesService.registerSale(data);
-  console.log('controller', result);
   if (result) {
     return res.status(201).json(result);
   }

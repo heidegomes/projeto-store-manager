@@ -10,20 +10,45 @@ describe('testes da camada model de sales', function () {
   afterEach(function () {
     sinon.restore();
   });
+
   it('Testa se a função getAll retorna todos as vendas do banco', async function () {
-    // Arrange
     sinon.stub(connection, 'execute').resolves([listSales]);
-    // Act
     const result = await salesModel.getAll();
-    // Assert
     expect(result).to.be.deep.equal(listSales);
   });
+
   it('Testa se a função getById retorna a venda referente ao id passado', async function () {
-    // Arrange
     sinon.stub(connection, 'execute').resolves([listSales[0]]);
-    // Act
     const result = await salesModel.getById(1);
-    // Assert
     expect(result).to.be.deep.equal(listSales[0]);
   });
+
+  // it('Testa se a função registerInSaleProducts cadastra uma venda', async function () {
+  //   // const insertId = await salesModel.registerInSales();
+  //   const mockSale = {
+  //     id: 13,
+  //     itemsSold: [
+  //       {
+  //         productId: 1,
+  //         quantity: 1,
+  //       },
+  //       {
+  //         productId: 2,
+  //         quantity: 5,
+  //       },
+  //     ],
+  //   };
+  //   sinon.stub(connection, 'execute').resolves([{ insertId: 13 }]);
+  //   const result = await salesModel.registerInSaleProducts([
+  //     {
+  //       productId: 1,
+  //       quantity: 1,
+  //     },
+  //     {
+  //       productId: 2,
+  //       quantity: 5,
+  //     },
+  //   ]);
+  //   expect(result).to.deep.equal(mockSale);
+  // });
 });

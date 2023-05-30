@@ -9,7 +9,7 @@ chai.use(sinonChai);
 const { expect } = chai;
 
 describe('testes da camada controller de sales', function () {
-  const req = { params: { id: 1 } };
+  let req = {};
   const res = {};
 
   beforeEach(function () {
@@ -27,12 +27,43 @@ describe('testes da camada controller de sales', function () {
     expect(res.json).to.be.calledWith(listSales);
   });
   it('Testa se a função getById retorna a venda referente ao id passado', async function () {
-    // Arrange
+    req = { params: { id: 1 } };
     sinon.stub(salesService, 'getById').resolves(listSales);
     // Act
     await salesController.getById(req, res);
     // Assert
     expect(res.status).to.be.calledWith(200);
     expect(res.json).to.be.calledWith(listSales);
+  });
+  it('Testa se a função registerSale cadastra uma venda', async function () {
+    req = {
+      body: [
+        {
+          productId: 1,
+          quantity: 1,
+        },
+        {
+          productId: 2,
+          quantity: 5,
+        },
+      ] };
+
+      const mockSale = {
+        id: 13,
+        itemsSold: [
+          {
+            productId: 1,
+            quantity: 1,
+          },
+          {
+            productId: 2,
+            quantity: 5,
+          },
+        ],
+      };
+    sinon.stub(salesService, 'registerSale').resolves(mockSale);
+    await salesController.registerSale(req, res);
+    expect(res.status).to.be.calledWith(201);
+    expect(res.json).to.be.calledWithExactly(mockSale);
   });
 });
