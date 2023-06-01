@@ -16,8 +16,8 @@ const registerProduct = async ({ name }) => {
   return result;
 };
 
-const updateProduct = async () => {
-  const [result] = await productsModel.getById(id);
-};
+// const updateProduct = async () => {
+//   const [result] = await productsModel.getById(id);
+// };
 
 module.exports = { getAll, getById, registerProduct };
