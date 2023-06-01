@@ -30,4 +30,18 @@ describe('testes da camada model de products', function () {
         },
       );
   });
+//   it(
+// 'Testa se a função updateProduct atualiza o produto referente ao id passado', 
+//     async function () {
+//       sinon.stub(connection, 'execute').resolves([listProducts[0]]);
+//       const result = await productsModel.updateProduct({
+//         id: 1,
+//         name: 'Martelo do Batman',
+//       });
+//       expect(result).to.deep.equal({
+//         id: 1,
+//         name: 'Martelo do Batman',
+//       });
+//   },
+// );
 });

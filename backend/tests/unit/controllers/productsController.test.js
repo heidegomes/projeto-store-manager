@@ -45,4 +45,20 @@ describe('testes da camada controller de products', function () {
     expect(res.status).to.be.calledWith(201);
     expect(res.json).to.be.calledWithExactly(mockProduct);
   });
+
+  it('Testa se a função updateProduct atualiza o produto', async function () {
+    req = { body: { name: 'Martelo do Batman' }, params: { id: 1 } };
+    
+    const mockService = { affectedRows: 1 };
+    
+    const mockProductResult = {
+      id: 1,
+      name: 'Martelo do Batman',
+    };
+
+    sinon.stub(productsService, 'updateProduct').resolves(mockService);
+    await productsController.updateProduct(req, res);
+    expect(res.status).to.be.calledWith(200);
+    expect(res.json).to.be.calledWithExactly(mockProductResult);
+  });
 });

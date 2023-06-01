@@ -20,4 +20,15 @@ const registerProduct = async (req, res) => {
   return res.status(201).json(result);
 };
 
-module.exports = { getAll, getById, registerProduct };
+const updateProduct = async (req, res) => {
+  const { id } = req.params;
+  const { name } = req.body;
+  const result = await productsService.updateProduct({ id, name });
+  console.log('controller', { id, name });
+  if (result) {
+    return res.status(200).json({ id: Number(id), name });
+  }
+  res.status(404).json({ message: 'Product not found' });
+};
+
+module.exports = { getAll, getById, registerProduct, updateProduct };
