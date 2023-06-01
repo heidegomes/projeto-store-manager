@@ -1,4 +1,5 @@
 const salesModel = require('../models/salesModel');
+const idValidation = require('./idValidation');
 
 const getAll = async () => {
   const result = await salesModel.getAll();
@@ -15,11 +16,15 @@ const getById = async (id) => {
 
 const registerSale = async (data) => {
   const salesId = await salesModel.registerInSales();
+
+  const verifiedId = await idValidation(data);
+    if (!verifiedId) {
+      return false;
+    }
   const arrProducts = data.map((product) => (
     salesModel.registerInSaleProducts(salesId, product.productId, product.quantity)
   ));
   await Promise.all(arrProducts);
-  console.log('array', arrProducts);
   const objProduct = {
     id: salesId,
     itemsSold: data,

@@ -22,33 +22,4 @@ describe('testes da camada model de sales', function () {
     const result = await salesModel.getById(1);
     expect(result).to.be.deep.equal(listSales[0]);
   });
-
-  // it('Testa se a função registerInSaleProducts cadastra uma venda', async function () {
-  //   // const insertId = await salesModel.registerInSales();
-  //   const mockSale = {
-  //     id: 13,
-  //     itemsSold: [
-  //       {
-  //         productId: 1,
-  //         quantity: 1,
-  //       },
-  //       {
-  //         productId: 2,
-  //         quantity: 5,
-  //       },
-  //     ],
-  //   };
-  //   sinon.stub(connection, 'execute').resolves([{ insertId: 13 }]);
-  //   const result = await salesModel.registerInSaleProducts([
-  //     {
-  //       productId: 1,
-  //       quantity: 1,
-  //     },
-  //     {
-  //       productId: 2,
-  //       quantity: 5,
-  //     },
-  //   ]);
-  //   expect(result).to.deep.equal(mockSale);
-  // });
 });

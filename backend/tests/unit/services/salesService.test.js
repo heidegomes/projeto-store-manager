@@ -28,4 +28,12 @@ describe('testes da camada service de sales', function () {
     expect(result).to.be.equal(false);
   },
 );
+//   it(
+// 'Testa se a função registerSale retorna um erro se o productId nao existir', 
+//   async function () {
+//     sinon.stub(salesModel, 'registerInSaleProducts').resolves(listSales[0]);
+//     const result = await salesService.registerSale(1);
+//     expect(result).to.be.deep.equal(listSales[0]);
+//   },
+// );
 });

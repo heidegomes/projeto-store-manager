@@ -1,7 +1,7 @@
 const chai = require('chai');
 const sinon = require('sinon');
 const sinonChai = require('sinon-chai');
-const productValidation = require('../../../src/middlewares/productValidation');
+const nameValidation = require('../../../src/middlewares/nameV');
 
 chai.use(sinonChai);
 const { expect } = chai;
@@ -16,7 +16,7 @@ describe('testes da validação de middleawers de products', function () {
 
   it('Testa se a requisição retorna um erro se a chave name não existir', async function () {
     req = { body: { item: 'anel do lanterna verde' } };
-    await productValidation(req, res);
+    await nameValidation(req, res);
     expect(res.status).to.be.calledWith(400);
     expect(res.json).to.be.calledWith({
         message: '"name" is required',
@@ -28,7 +28,7 @@ describe('testes da validação de middleawers de products', function () {
     async function () {
     req = { body: { name: 'lua' } };
 
-    await productValidation(req, res);
+      await nameValidation(req, res);
     expect(res.status).to.be.calledWith(422);
     expect(res.json).to.be.calledWith({
       message: '"name" length must be at least 5 characters long',

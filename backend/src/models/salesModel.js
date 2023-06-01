@@ -25,7 +25,6 @@ const registerInSaleProducts = async (saleId, productId, quantity) => {
   const query = `INSERT INTO StoreManager.sales_products(sale_id, product_id, quantity) 
   VALUES(?, ?, ?);`; 
   const [result] = await connection.execute(query, [saleId, productId, quantity]);
-  console.log(result);
   return result;
 };
 
