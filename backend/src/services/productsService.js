@@ -22,9 +22,19 @@ const updateProduct = async (id) => {
   if (verifiedId.length === 0) {
     return false;
   }
-  const result = await productsModel.deleteProduct(id);
+  const result = await productsModel.updateProduct(id);
   console.log('service', result);
   return result;
 };
 
-module.exports = { getAll, getById, registerProduct, updateProduct };
+const deleteProduct = async (id) => {
+  const verifiedId = await productsModel.getById(id);
+  console.log('id', verifiedId);
+  if (verifiedId.length === 0) {
+    return false;
+  }
+  const result = await productsModel.deleteProduct(id);
+  console.log('service', result);
+  return result;
+};
+module.exports = { getAll, getById, registerProduct, updateProduct, deleteProduct };
