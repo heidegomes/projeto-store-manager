@@ -33,7 +33,7 @@ const updateProduct = async (req, res) => {
 const deleteProduct = async (req, res) => {
   const { id } = req.params;
   const result = await productsService.deleteProduct(id);
-  console.log('controller', id);
+  console.info('###### controller id=', id);
   if (result) {
     return res.status(204).json();
   }

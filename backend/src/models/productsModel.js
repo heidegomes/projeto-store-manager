@@ -8,7 +8,7 @@ const getAll = async () => {
 const getById = async (id) => {
   const [result] = await connection
     .execute('SELECT * FROM StoreManager.products WHERE id = ?', [id]);
-    console.log('getByIdModel', result);
+    console.info('#### getByIdModel product: ', result);
   return result;
 };
 
@@ -27,7 +27,7 @@ const updateProduct = async ({ id, name }) => {
 const deleteProduct = async (id) => {
   const query = 'DELETE FROM StoreManager.products WHERE id = ?';
   const [result] = await connection.execute(query, [id]);
-  console.log('model', result);
+  console.log('modelDelete', result);
   return result;
 };
 

@@ -61,4 +61,14 @@ describe('testes da camada controller de products', function () {
     expect(res.status).to.be.calledWith(200);
     expect(res.json).to.be.calledWithExactly(mockProductResult);
   });
+
+  it('Testa se a função deleteProduct deleta o produto', async function () {
+    req = { params: { id: 1 } };
+
+    const mockService = { affectedRows: 1 };
+
+    sinon.stub(productsService, 'deleteProduct').resolves(mockService);
+    await productsController.deleteProduct(req, res);
+    expect(res.status).to.be.calledWith(204);
+  });
 });
