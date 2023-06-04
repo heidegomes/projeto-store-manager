@@ -16,13 +16,12 @@ const registerProduct = async ({ name }) => {
   return result;
 };
 
-const updateProduct = async (id) => {
+const updateProduct = async ({ id, name }) => {
   const verifiedId = await productsModel.getById(id);
-  console.log('id', verifiedId);
   if (verifiedId.length === 0) {
     return false;
   }
-  const result = await productsModel.updateProduct(id);
+  const result = await productsModel.updateProduct({ id, name });
   console.log('service', result);
   return result;
 };

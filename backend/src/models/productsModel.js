@@ -8,6 +8,7 @@ const getAll = async () => {
 const getById = async (id) => {
   const [result] = await connection
     .execute('SELECT * FROM StoreManager.products WHERE id = ?', [id]);
+    console.log('getByIdModel', result);
   return result;
 };
 
@@ -20,7 +21,6 @@ const registerProduct = async ({ name }) => {
 const updateProduct = async ({ id, name }) => {
   const query = 'UPDATE StoreManager.products SET name = ? WHERE id = ?';
   const [result] = await connection.execute(query, [name, id]);
-  console.log('model', result);
   return result;
 };
 

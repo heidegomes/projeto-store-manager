@@ -24,7 +24,6 @@ const updateProduct = async (req, res) => {
   const { id } = req.params;
   const { name } = req.body;
   const result = await productsService.updateProduct({ id, name });
-  console.log('controller', { id, name });
   if (result) {
     return res.status(200).json({ id: Number(id), name });
   }
